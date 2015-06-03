@@ -12,11 +12,24 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 1337;
 
+var mongo = require('mongodb').MongoClient;
 
+
+// Socket.io
 io.on('connection', function(client) {
     console.log('client connected ...');
 });
 
+
+
+// MongoDB
+/*mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+    var collection = db.collection('chat messages');
+    collection.insert({ content: msg }, function(err, o) {
+        if (err) { console.warn(err.message); }
+        else { console.log("chat message inserted into db: " + msg); }
+    });
+});*/
 
 // Configure Express to use the EJS view engine.
 app.set('view engine', 'ejs');
