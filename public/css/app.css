@@ -1,1 +1,33 @@
-/*custom css
+/*custom css*/
+
+html,
+body{
+    background-color: #D5D6DE;
+    color: #444;
+}
+
+.row {
+    background-color: #FFF;
+}
+
+::selection {
+    background: #abafbf;
+    color: #fff;
+    text-shadow: none;
+}
+
+h1 {
+    font-family: 'dincond-boldbold';
+    color: #030f40;
+    font-weight: normal;
+}
+
+.sub-title {
+    font-family: 'dincond-lightregular';
+    font-size: 22px;
+    color: #666;
+    line-height: 150%;
+    border-bottom: 1px solid #d8dfe4;
+    padding: 0 0 10px;
+    margin: 0 0 10px;
+}
