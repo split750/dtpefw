@@ -2,10 +2,16 @@
 <html>
 <head>
     <title>DTP EfW App</title>
+    <link rel="stylesheet" href="/css/foundation.css">
+
 </head>
 <body>
-    <h1>Welcome to the DTP EfW app</h1>
-    <p>This page was rendered at <%= new Date() %>.</p>
+    <div class="row">
+        <div class="small-2 large-10 columns">
+            <h1>Welcome to the DTP EfW app</h1>
+            <p>This page was rendered at <%= new Date() %>.</p>
+        </div>
+    </div>
 
     <input id="a" type="number"> + <input id="b" type="number">
 
@@ -27,5 +33,7 @@
     <script>
         var socket = io.connect('http://localhost:1337');
     </script>
+
+    <script src="/components/foundation/js/foundation.min.js"></script>
 </body>
 </html>
