@@ -8,6 +8,16 @@ var bodyParser = require('body-parser');
 // Create the Express application object.
 var app = express();
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var port = process.env.PORT || 1337;
+
+
+io.on('connection', function(client) {
+    console.log('client connected ...');
+});
+
+
 // Configure Express to use the EJS view engine.
 app.set('view engine', 'ejs');
 
@@ -28,4 +38,4 @@ app.post('/add', bodyParser.json(), function(req, res) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server on a custom port.
-app.listen(process.env.PORT || 1337);
+server.listen(port);

@@ -1,0 +1,16 @@
+{
+  "name": "dtpefw",
+  "version": "0.0.0",
+  "description": "dtpefw app",
+  "main": "app.js",
+  "author": {
+    "name": "Godefroy LE MERDY",
+    "email": ""
+  },
+  "dependencies": {
+    "ejs": "*",
+    "express": "*",
+    "socket.io": "^1.3.5",
+    "stylus": "*"
+  }
+}
