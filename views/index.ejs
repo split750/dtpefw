@@ -2,7 +2,14 @@
 <html>
 <head>
     <title>DTP EfW App</title>
-    <link rel="stylesheet" href="/css/foundation.css">
+    
+    <link rel="stylesheet" href="css/foundation.min.css">
+
+    <!-- This is how you would link your custom stylesheet -->
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/vendor/modernizr.js"></script>
+
 
 </head>
 <body>
@@ -34,6 +41,6 @@
         var socket = io.connect('http://localhost:1337');
     </script>
 
-    <script src="/components/foundation/js/foundation.min.js"></script>
+    <script src="components/foundation/js/foundation.min.js"></script>
 </body>
 </html>
