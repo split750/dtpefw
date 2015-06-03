@@ -10,8 +10,8 @@
   "dependencies": {
     "ejs": "*",
     "express": "*",
+    "mongoose": "^4.0.4",
     "socket.io": "^1.3.5",
-    "stylus": "*",
-    "mongodb": "*"
+    "stylus": "*"
   }
 }
