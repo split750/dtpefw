@@ -4,6 +4,7 @@ var path = require('path');
 // Load third-party modules.
 var express = require('express');
 var bodyParser = require('body-parser');
+//var parseUrlencoded = bodyParser.parseUrlencoded({ extended: false});
 
 // Create the Express application object.
 var app = express();
@@ -12,24 +13,11 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 1337;
 
-var mongo = require('mongodb').MongoClient;
-
 
 // Socket.io
 io.on('connection', function(client) {
     console.log('client connected ...');
 });
-
-
-
-// MongoDB
-/*mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-    var collection = db.collection('chat messages');
-    collection.insert({ content: msg }, function(err, o) {
-        if (err) { console.warn(err.message); }
-        else { console.log("chat message inserted into db: " + msg); }
-    });
-});*/
 
 // Configure Express to use the EJS view engine.
 app.set('view engine', 'ejs');
@@ -45,6 +33,21 @@ app.get('/', function(req, res) {
 // Do some addition when JSON is posted to "/add".
 app.post('/add', bodyParser.json(), function(req, res) {
     res.json(req.body.a + req.body.b);
+});
+
+// add BU route
+app.post('/addBU', function (req, res) {
+    var newBU = request.body;
+    BU[newBU.name] = newBU.name;
+    response.status(201).json(newBU.name);
+});
+
+// Add BU route
+app.get('/addBU', function(request, response) {
+    //var BU = [];
+    //response.json(Object.keys(BU));
+    var blocks = ['fixed', 'Movable'];
+    response.send(blocks);
 });
 
 // Serve static files from the "public" folder.
