@@ -10,9 +10,12 @@ var users = require('./routes/users');
 
 var app = express();
 
+var server = require('http').createServer(app);
+var port = process.env.PORT || 1337;
+
 // Connect Mongolab
 var TaskList = require('./routes/tasklist');
-var taskList = new TaskList(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
+var taskList = new TaskList(CUSTOMCONNSTR_MONGOLAB_URI);
 
 
 // view engine setup
@@ -62,5 +65,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000); // Listen on port 3000
+app.listen(port); // Listen on port 1337
 module.exports = app;
