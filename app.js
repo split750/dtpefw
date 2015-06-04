@@ -15,7 +15,8 @@ var port = process.env.PORT || 1337;
 
 // Connect Mongolab
 var TaskList = require('./routes/tasklist');
-var taskList = new TaskList(CUSTOMCONNSTR_MONGOLAB_URI);
+
+var taskList = new TaskList('mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW');
 
 
 // view engine setup
