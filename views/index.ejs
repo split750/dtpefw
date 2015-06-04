@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Welcome to todo list</title>
-  <link rel="stylesheet" href="/public/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
   <h1><%= title %></h1>
@@ -15,9 +15,9 @@
         <td>Date</td>
         <td>Complete each task in tasks</td>
         <tr>
-          <td><%= tasks.itemName %></td>
-          <td><%= tasks.itemsCategory %></td>
-          <td><%= tasks.itemsDate %></td>
+          <td><%= tasks %></td>
+          <td><%= tasks.itemCategory %></td>
+          <td><%= tasks.itemDate %></td>
           <td>
             <input type="checkbox" name="<%= tasks._id %>" value="<%= !tasks.itemCompleted %>" checked="<%= !tasks.itemCompleted %>">
           </td>
