@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var task = require('../models/task.js');
+var task = require('../dataModels/task.js');
 
 module.exports = TaskList;
 
