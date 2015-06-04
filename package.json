@@ -10,8 +10,10 @@
   "dependencies": {
     "ejs": "*",
     "express": "*",
+    "express-validator": "*",
     "mongoose": "^4.0.4",
     "socket.io": "^1.3.5",
-    "stylus": "*"
+    "stylus": "*",
+    "morgan": "*"
   }
 }

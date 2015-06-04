@@ -3,11 +3,22 @@ var path = require('path');
 
 // Load third-party modules.
 var express = require('express');
-var bodyParser = require('body-parser');
-//var parseUrlencoded = bodyParser.parseUrlencoded({ extended: false});
+var validator = require('express-validator');
 
 // Create the Express application object.
 var app = express();
+
+//var bodyParser = require('body-parser');
+//var parseUrlencoded = bodyParser.parseUrlencoded({ extended: false});
+
+
+app.use(validator());
+
+// *** routes ***
+require('./routes.js')(app);
+
+// ** validation rules ***
+require('./validation-rules.js')(validator);
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
@@ -19,6 +30,34 @@ io.on('connection', function(client) {
     console.log('client connected ...');
 });
 
+
+// get the mongoose configuration/connection
+require('./data/db.js');
+
+
+//**************** LOGIN ***************************//
+
+var fs = require('fs');
+var morgan = require('morgan');
+ 
+// *** middleware start **
+// ** logging **
+// create a write stream (in append mode)
+var logFile = fs.createWriteStream(__dirname + '/nodeToDoLog.log', { flags: 'a' });
+ 
+// logging options
+morganOptions = {
+  stream: logFile
+  // , skip: function (req, res) { return res.statusCode < 400; }  // uncomment this to log errors only
+};
+// enable logger
+app.use(morgan('combined', morganOptions));
+
+
+
+//**************** OTHER CODE **********************//
+
+/*
 // Configure Express to use the EJS view engine.
 app.set('view engine', 'ejs');
 
@@ -49,6 +88,8 @@ app.get('/addBU', function(request, response) {
     var blocks = ['fixed', 'Movable'];
     response.send(blocks);
 });
+
+*/
 
 // Serve static files from the "public" folder.
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,11 +1,9 @@
 var mongoose = require('mongoose'), 
   Schema = mongoose.Schema;
 
-var TaskSchema = new Schema({
+var BUSchema = new Schema({
   itemName      : String, 
-  itemCategory  : String, 
-  itemCompleted : { type: Boolean, default: false },
-  itemDate      : { type: Date, default: Date.now }
+  itemDescription  : String, 
 });
 
-module.exports = mongoose.model('TaskModel', TaskSchema);
+module.exports = mongoose.model('BUModel', BUSchema);
