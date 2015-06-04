@@ -3,7 +3,9 @@ var express = require('express'),
     http = require('http'),
     wine = require('./routes/wines');
 
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -16,6 +18,12 @@ app.use(express.static(__dirname + '/public'));
 //app.use(express.bodyParser());
 //app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(methodOverride());
+
+// Socket.io
+var io = require('socket.io').listen(server);
 
 app.get('/wines', wine.findAll);
 app.get('/wines/:id', wine.findById);
