@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+//var routes = require('./routes/index');
+//var users = require('./routes/users');
 
 var app = express();
 
@@ -15,13 +15,12 @@ var port = process.env.PORT || 1337;
 
 // Connect Mongolab
 var TaskList = require('./routes/tasklist');
-
 var taskList = new TaskList('mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW');
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -44,7 +43,7 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// development error handler
+/* development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
@@ -65,6 +64,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+*/
 
 app.listen(port); // Listen on port 1337
 module.exports = app;

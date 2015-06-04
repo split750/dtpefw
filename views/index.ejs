@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to todo list</title>
+  <link rel="stylesheet" href="/public/stylesheets/style.css">
+</head>
+<body>
+  <h1><%= title %></h1>
+  <form action="/completetask" method="post">
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Category</td>
+        <td>Date</td>
+        <td>Complete each task in tasks</td>
+        <tr>
+          <td><%= tasks.itemName %></td>
+          <td><%= tasks.itemsCategory %></td>
+          <td><%= tasks.itemsDate %></td>
+          <td>
+            <input type="checkbox" name="<%= tasks._id %>" value="<%= !tasks.itemCompleted %>" checked="<%= !tasks.itemCompleted %>">
+          </td>
+        </tr>
+      </tr>
+    </table>
+    <input type="submit" value="Update tasks">
+  </form>
+  <hr>
+  <form action="/addtask" method="post">
+    <table border="1"> 
+      <tr>
+        <td>Item Name:</td> 
+        <td> 
+          <input name="itemName" type="textbox">
+        </td>
+      </tr>
+      <tr>
+        <td>Item Category:</td> 
+        <td> 
+          <input name="itemCategory" type="textbox">
+        </td>
+      </tr>
+    </table>  
+    <input type="submit" value="Add item">
+  </form>
+</body>
+</html>
