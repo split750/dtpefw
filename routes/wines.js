@@ -1,24 +1,26 @@
 var mongo = require('mongodb');
 
+var uri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
+
 var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-var server = new Server('terminus3.mongolab.com', 37177, {auto_reconnect: true});
-db = new Db('MongoLabDTPEfW', server, {safe: true});
+var server = new Server('ds036178.mongolab.com', 36178, {auto_reconnect: true});
+var db = new Db('MongoLabDTPEfW', server, {safe: true});
 
 db.open(function(err, db) {
-    db.authenticate('admin', 'Suez2014', function(err, success) {
-       if(!err) {
-            console.log("Connected to 'winedb' database");
-            db.collection('wines', {safe:true}, function(err, collection) {
-                if (err) {
-                    console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
-                    populateDB();
-                }
-            });
-        } 
-    });
+    if(!err) {
+        console.log("Connected to 'MongoLabDTPEfW' database");
+        db.collection('wines', {safe:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
+                populateDB();
+            }
+        });
+    } else {
+       console.log("Can not connect to 'MongoLabDTPEfW' database"); 
+    }
 });
 
 exports.findById = function(req, res) {
