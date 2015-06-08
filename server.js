@@ -15,6 +15,8 @@ var port = process.env.PORT || 1337;
 // Routing
 app.use(express.static(__dirname + '/public'));
 
+
+
 //app.use(express.bodyParser());
 //app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
 

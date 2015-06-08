@@ -1,3 +1,99 @@
+// mongoose 3.8.x
+var mongoose = require('mongoose');
+// mongodb-uri 0.9.x
+var uriUtil = require('mongodb-uri');
+ 
+/* 
+ * Mongoose by default sets the auto_reconnect option to true.
+ * We recommend setting socket options at both the server and replica set level.
+ * We recommend a 30 second connection timeout because it allows for 
+ * plenty of time in most operating environments.
+ */
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
+ 
+/*
+ * Mongoose uses a different connection string format than MongoDB's standard.
+ * Use the mongodb-uri library to help you convert from the standard format to
+ * Mongoose's format.
+ */
+var mongodbUri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+ 
+var wine = require('../dataModels/wine.js');
+
+
+mongoose.connect(mongooseUri, options);
+var db = mongoose.connection;             
+ 
+db.on('error', console.error.bind(console, 'connection error:'));  
+ 
+var dbOpened = db.once('open', function() {
+    // Wait for the database connection to establish, then start the app.  
+    console.log('connection to mongolab OK'); 
+
+    /*
+    wineSchema = mongoose.Schema({
+        name: String,
+        year: Number,
+        grapes: String,
+        country: String,
+        region: String,
+        description: String,
+        picture: String
+    });
+
+    // Store song documents in a collection called "songs"
+    Wine = mongoose.model('wines', wineSchema);
+    */
+
+    // Create seed data
+    /*var wine1 = new Wine({
+        name: "CHATEAU DE SAINT COSME",
+        year: "2009",
+        grapes: "Grenache / Syrah",
+        country: "France",
+        region: "Southern Rhone",
+        description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
+        picture: "saint_cosme.jpg"
+    });
+
+    wine1.save();   */ 
+    
+});
+
+
+/*********** New code ***************
+
+//var mongoose = require('mongoose');
+
+//var task = require('../datamodels/task.js');
+
+// Connect Mongolab
+//var TaskList = require('./wines');
+//var taskList = new TaskList('mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW');
+
+
+//module.exports = TaskList;
+
+var connection = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
+
+mongoose.connect(connection);
+
+  // connection events: 
+  // we can use the mongoose api to hook into events e.g. when connecting / disconnecting to MongoDB
+mongoose.connection.on('connected', function() {
+    console.log('Connected to url: ');
+  });
+/*mongoose.connection.on('error', function(err) {
+    console.log('Connection error: ' + err);
+  });
+*/
+
+
+
+//********** Code original ***********//
+/*
 var mongo = require('mongodb');
 
 var uri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
@@ -9,19 +105,23 @@ var Server = mongo.Server,
 var server = new Server('ds036178.mongolab.com', 36178, {auto_reconnect: true});
 var db = new Db('MongoLabDTPEfW', server, {safe: true});
 
+
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'MongoLabDTPEfW' database");
-        db.collection('wines', {safe:true}, function(err, collection) {
+        console.log(db);
+        db.collection('wines2', {safe:true}, function(err, collection) {
             if (err) {
                 console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
                 populateDB();
+                console.log('try to populate');
             }
         });
     } else {
        console.log("Can not connect to 'MongoLabDTPEfW' database"); 
     }
 });
+*/
 
 exports.findById = function(req, res) {
     var id = req.params.id;
@@ -42,9 +142,43 @@ exports.findAll = function(req, res) {
 };
 
 exports.addWine = function(req, res) {
-    var wine = req.body;
-    console.log('Adding wine: ' + JSON.stringify(wine));
-    db.collection('wines', function(err, collection) {
+    var wineItem = req.body;
+    console.log('Adding wine: ' + JSON.stringify(wineItem));
+    console.log(wineItem.name);
+        
+        /*var wineSchema = mongoose.Schema({
+            name: String,
+            year: Number,
+            grapes: String,
+            country: String,
+            region: String,
+            description: String,
+            picture: String
+        });
+
+        // Store song documents in a collection called "songs"
+        var Wine = mongoose.model('wines', wineSchema);
+        */
+
+        var newWine = new wine({
+            name: wineItem.name,
+            year: wineItem.year,
+            grapes: "Grenache / Syrah",
+            country: "France",
+            region: "Southern Rhone",
+            description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
+            picture: "saint_cosme.jpg"
+        });
+
+        newWine.save(function savedTask(err) {
+          if(err) {
+            throw err;
+          }
+        });
+
+        console.log('saved wine !');
+
+    /*db.collection('wines', function(err, collection) {
         collection.insert(wine, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred'});
@@ -53,7 +187,7 @@ exports.addWine = function(req, res) {
                 res.send(result[0]);
             }
         });
-    });
+    });*/
 }
 
 exports.updateWine = function(req, res) {
@@ -89,6 +223,8 @@ exports.deleteWine = function(req, res) {
         });
     });
 }
+
+
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
