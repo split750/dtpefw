@@ -37,38 +37,6 @@ var dbOpened = db.once('open', function() {
 
 
 
-
-//********** Code original ***********//
-/*
-var mongo = require('mongodb');
-
-var uri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
-
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
-
-var server = new Server('ds036178.mongolab.com', 36178, {auto_reconnect: true});
-var db = new Db('MongoLabDTPEfW', server, {safe: true});
-
-
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'MongoLabDTPEfW' database");
-        console.log(db);
-        db.collection('wines2', {safe:true}, function(err, collection) {
-            if (err) {
-                console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
-                populateDB();
-                console.log('try to populate');
-            }
-        });
-    } else {
-       console.log("Can not connect to 'MongoLabDTPEfW' database"); 
-    }
-});
-*/
-
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving wine: ' + id);
@@ -76,14 +44,6 @@ exports.findById = function(req, res) {
     wine.findOne({'_id': id}, function foundTasks(err, items) {
         res.send(items);
     });
-
-    /*
-    db.collection('wines', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send(item);
-        });
-    });
-    */
 };
 
 exports.findAll = function(req, res) {
@@ -121,35 +81,32 @@ exports.addWine = function(req, res) {
 
 exports.updateWine = function(req, res) {
     var id = req.params.id;
-    var wine = req.body;
-    delete wine._id;
+    var wineItem = req.body;
+    delete wineItem._id;
     console.log('Updating wine: ' + id);
-    console.log(JSON.stringify(wine));
-    db.collection('wines', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, wine, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error updating wine: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' document(s) updated');
-                res.send(wine);
-            }
-        });
+    console.log(JSON.stringify(wineItem));
+    wine.update({'_id': id}, wineItem, function(err) {
+        if (err) {
+            console.log('Error updating wine: ' + err);
+            res.send({'error':'An error has occurred'});
+        } else {
+            console.log(wineItem.name + ' wine document(s) updated');
+            res.send(wineItem);
+        }
     });
 }
 
 exports.deleteWine = function(req, res) {
     var id = req.params.id;
     console.log('Deleting wine: ' + id);
-    db.collection('wines', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred - ' + err});
-            } else {
-                console.log('' + result + ' document(s) deleted');
-                res.send(req.body);
-            }
-        });
+    
+    wine.remove({'_id': id}, function(err) {
+        if (err) {
+            res.send({'error':'An error has occurred - ' + err});
+        } else {
+            console.log('wine '+ id + ' document(s) deleted');
+            res.send(req.body);
+        }
     });
 }
 
