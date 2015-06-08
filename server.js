@@ -27,11 +27,11 @@ app.use(methodOverride());
 // Socket.io
 var io = require('socket.io').listen(server);
 
-app.get('/wines', wine.findAll);
-app.get('/wines/:id', wine.findById);
-app.post('/wines', wine.addWine);
-app.put('/wines/:id', wine.updateWine);
-app.delete('/wines/:id', wine.deleteWine);
+app.get('/plants', wine.findAll);
+app.get('/plants/:id', wine.findById);
+app.post('/plants', wine.addWine);
+app.put('/plants/:id', wine.updateWine);
+app.delete('/plants/:id', wine.deleteWine);
 
 server.listen(port, function () {
     console.log("Express server listening on port " + port);

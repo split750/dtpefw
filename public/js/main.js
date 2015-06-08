@@ -1,12 +1,12 @@
 var AppRouter = Backbone.Router.extend({
 
     routes: {
-        ""                  : "home",
-        "wines"	            : "list",
-        "wines/page/:page"	: "list",
-        "wines/add"         : "addWine",
-        "wines/:id"         : "wineDetails",
-        "about"             : "about"
+        ""                      : "home",
+        "plants"	            : "list",
+        "plants/page/:page"	    : "list",
+        "plants/add"            : "addPlant",
+        "plants/:id"            : "plantDetails",
+        "about"                 : "about"
     },
 
     initialize: function () {
@@ -31,7 +31,7 @@ var AppRouter = Backbone.Router.extend({
         this.headerView.selectMenuItem('home-menu');
     },
 
-    wineDetails: function (id) {
+    plantDetails: function (id) {
         var wine = new Wine({_id: id});
         wine.fetch({success: function(){
             $("#content").html(new WineView({model: wine}).el);
@@ -39,7 +39,7 @@ var AppRouter = Backbone.Router.extend({
         this.headerView.selectMenuItem();
     },
 
-	addWine: function() {
+	addPlant: function() {
         var wine = new Wine();
         $('#content').html(new WineView({model: wine}).el);
         this.headerView.selectMenuItem('add-menu');
