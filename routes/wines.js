@@ -73,11 +73,17 @@ exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving wine: ' + id);
     
+    wine.findOne({'_id': id}, function foundTasks(err, items) {
+        res.send(items);
+    });
+
+    /*
     db.collection('wines', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
     });
+    */
 };
 
 exports.findAll = function(req, res) {
