@@ -19,10 +19,12 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
  */
 var mongodbUri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
- 
+
+/******* Load Model *********/ 
 var wine = require('../dataModels/wine.js');
 
 
+/******* Connect to Mongolab **********/
 mongoose.connect(mongooseUri, options);
 var db = mongoose.connection;             
  
@@ -30,65 +32,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
  
 var dbOpened = db.once('open', function() {
     // Wait for the database connection to establish, then start the app.  
-    console.log('connection to mongolab OK'); 
-
-    /*
-    wineSchema = mongoose.Schema({
-        name: String,
-        year: Number,
-        grapes: String,
-        country: String,
-        region: String,
-        description: String,
-        picture: String
-    });
-
-    // Store song documents in a collection called "songs"
-    Wine = mongoose.model('wines', wineSchema);
-    */
-
-    // Create seed data
-    /*var wine1 = new Wine({
-        name: "CHATEAU DE SAINT COSME",
-        year: "2009",
-        grapes: "Grenache / Syrah",
-        country: "France",
-        region: "Southern Rhone",
-        description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
-        picture: "saint_cosme.jpg"
-    });
-
-    wine1.save();   */ 
-    
+    console.log('connection to mongolab OK');   
 });
 
-
-/*********** New code ***************
-
-//var mongoose = require('mongoose');
-
-//var task = require('../datamodels/task.js');
-
-// Connect Mongolab
-//var TaskList = require('./wines');
-//var taskList = new TaskList('mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW');
-
-
-//module.exports = TaskList;
-
-var connection = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nMRuqj6U-@ds036178.mongolab.com:36178/MongoLabDTPEfW';
-
-mongoose.connect(connection);
-
-  // connection events: 
-  // we can use the mongoose api to hook into events e.g. when connecting / disconnecting to MongoDB
-mongoose.connection.on('connected', function() {
-    console.log('Connected to url: ');
-  });
-/*mongoose.connection.on('error', function(err) {
-    console.log('Connection error: ' + err);
-  });
-*/
 
 
 
@@ -126,6 +72,7 @@ db.open(function(err, db) {
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving wine: ' + id);
+    
     db.collection('wines', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
@@ -134,60 +81,36 @@ exports.findById = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-    db.collection('wines', function(err, collection) {
-        collection.find().toArray(function(err, items) {
-            res.send(items);
-        });
+    console.log('search wines');
+    
+    wine.find(function foundTasks(err, items) {
+        res.send(items);
     });
 };
 
 exports.addWine = function(req, res) {
     var wineItem = req.body;
     console.log('Adding wine: ' + JSON.stringify(wineItem));
-    console.log(wineItem.name);
         
-        /*var wineSchema = mongoose.Schema({
-            name: String,
-            year: Number,
-            grapes: String,
-            country: String,
-            region: String,
-            description: String,
-            picture: String
-        });
+    var newWine = new wine({
+        name: wineItem.name,
+        year: wineItem.year,
+        grapes: wineItem.grapes,
+        country: wineItem.country,
+        region: wineItem.region,
+        description: wineItem.description,
+        picture: wineItem.picture
+    });
 
-        // Store song documents in a collection called "songs"
-        var Wine = mongoose.model('wines', wineSchema);
-        */
-
-        var newWine = new wine({
-            name: wineItem.name,
-            year: wineItem.year,
-            grapes: "Grenache / Syrah",
-            country: "France",
-            region: "Southern Rhone",
-            description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
-            picture: "saint_cosme.jpg"
-        });
-
-        newWine.save(function savedTask(err) {
-          if(err) {
-            throw err;
-          }
-        });
-
+    newWine.save(function savedTask(err) {
+      if(err) {
+        throw err;
+        res.send({'error':'An error has occurred'});
+      } else {
         console.log('saved wine !');
-
-    /*db.collection('wines', function(err, collection) {
-        collection.insert(wine, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
-    });*/
+        res.send('Wine saved !');
+      }
+    });
 }
 
 exports.updateWine = function(req, res) {
