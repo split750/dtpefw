@@ -1,7 +1,7 @@
 var express = require('express'),
     path = require('path'),
     http = require('http'),
-    wine = require('./routes/wines');
+    plant = require('./routes/plant');
 
 var bodyParser = require('body-parser');
 var logger = require('morgan');
@@ -27,11 +27,11 @@ app.use(methodOverride());
 // Socket.io
 var io = require('socket.io').listen(server);
 
-app.get('/plants', wine.findAll);
-app.get('/plants/:id', wine.findById);
-app.post('/plants', wine.addWine);
-app.put('/plants/:id', wine.updateWine);
-app.delete('/plants/:id', wine.deleteWine);
+app.get('/plants', plant.findAll);
+app.get('/plants/:id', plant.findById);
+app.post('/plants', plant.addPlant);
+app.put('/plants/:id', plant.updatePlant);
+app.delete('/plants/:id', plant.deletePlant);
 
 server.listen(port, function () {
     console.log("Express server listening on port " + port);

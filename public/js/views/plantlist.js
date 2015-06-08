@@ -1,19 +1,19 @@
-window.WineListView = Backbone.View.extend({
+window.PlantListView = Backbone.View.extend({
 
     initialize: function () {
         this.render();
     },
 
     render: function () {
-        var wines = this.model.models;
-        var len = wines.length;
+        var plants = this.model.models;
+        var len = plants.length;
         var startPos = (this.options.page - 1) * 8;
         var endPos = Math.min(startPos + 8, len);
 
         $(this.el).html('<ul class="thumbnails"></ul>');
 
         for (var i = startPos; i < endPos; i++) {
-            $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
+            $('.thumbnails', this.el).append(new PlantListItemView({model: plants[i]}).render().el);
         }
 
         $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
@@ -22,7 +22,7 @@ window.WineListView = Backbone.View.extend({
     }
 });
 
-window.WineListItemView = Backbone.View.extend({
+window.PlantListItemView = Backbone.View.extend({
 
     tagName: "li",
 

@@ -21,7 +21,7 @@ var mongodbUri = 'mongodb://MongoLabDTPEfW:V9kjSsLbyGMFd9kwpaJPTUYqzWKUs.qqb43nM
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
 /******* Load Model *********/ 
-var wine = require('../dataModels/wineModel.js');
+var plantModel = require('../dataModels/plantModel.js');
 
 
 /******* Connect to Mongolab **********/
@@ -39,72 +39,73 @@ var dbOpened = db.once('open', function() {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving wine: ' + id);
+    console.log('Retrieving plant: ' + id);
     
-    wine.findOne({'_id': id}, function foundTasks(err, items) {
+    plantModel.findOne({'_id': id}, function foundTasks(err, items) {
         res.send(items);
     });
 };
 
 exports.findAll = function(req, res) {
-    console.log('search wines');
+    console.log('search plants');
     
-    wine.find(function foundTasks(err, items) {
+    plantModel.find(function foundTasks(err, items) {
         res.send(items);
     });
 };
 
-exports.addWine = function(req, res) {
-    var wineItem = req.body;
-    console.log('Adding wine: ' + JSON.stringify(wineItem));
+exports.addPlant = function(req, res) {
+    var plantItem = req.body;
+    console.log('Adding plant: ' + JSON.stringify(plantItem));
         
-    var newWine = new wine({
-        name: wineItem.name,
-        year: wineItem.year,
-        grapes: wineItem.grapes,
-        country: wineItem.country,
-        region: wineItem.region,
-        description: wineItem.description,
-        picture: wineItem.picture
+    var newPlant = new plantModel({
+        bu: plantItem.bu,
+        region: plantItem.region,
+        name: plantItem.name,
+        year: plantItem.year,
+        grapes: plantItem.grapes,
+        country: plantItem.country,
+        description: plantItem.description,
+        picture: plantItem.picture
     });
 
-    newWine.save(function savedTask(err) {
+    newPlant.save(function savedTask(err) {
       if(err) {
         throw err;
         res.send({'error':'An error has occurred'});
       } else {
-        console.log('saved wine !');
-        res.send('Wine saved !');
+        console.log('saved plant !');
+        res.send({'success':'saved !'});
       }
     });
 }
 
-exports.updateWine = function(req, res) {
+exports.updatePlant = function(req, res) {
     var id = req.params.id;
-    var wineItem = req.body;
-    delete wineItem._id;
-    console.log('Updating wine: ' + id);
-    console.log(JSON.stringify(wineItem));
-    wine.update({'_id': id}, wineItem, function(err) {
+    var plantItem = req.body;
+    delete plantItem._id;
+    console.log('Updating plant: ' + id);
+    console.log(JSON.stringify(plantItem));
+    plantModel.update({'_id': id}, plantItem, function(err) {
         if (err) {
-            console.log('Error updating wine: ' + err);
+            console.log('Error updating plant: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
-            console.log(wineItem.name + ' wine document(s) updated');
-            res.send(wineItem);
+            console.log(plantItem.name + ' plant document(s) updated');
+            res.send(plantItem);
         }
     });
 }
 
-exports.deleteWine = function(req, res) {
+exports.deletePlant = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting wine: ' + id);
+    console.log('Deleting plant: ' + id);
     
-    wine.remove({'_id': id}, function(err) {
+    plantModel.remove({'_id': id}, function(err) {
         if (err) {
             res.send({'error':'An error has occurred - ' + err});
         } else {
-            console.log('wine '+ id + ' document(s) deleted');
+            console.log('plant '+ id + ' document(s) deleted');
             res.send(req.body);
         }
     });

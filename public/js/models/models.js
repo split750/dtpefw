@@ -1,4 +1,4 @@
-window.Wine = Backbone.Model.extend({
+window.Plant = Backbone.Model.extend({
 
     urlRoot: "/plants",
 
@@ -43,19 +43,20 @@ window.Wine = Backbone.Model.extend({
 
     defaults: {
         _id: null,
+        bu: "",
+        region: "",
         name: "",
         grapes: "",
         country: "USA",
-        region: "California",
         year: "",
         description: "",
         picture: null
     }
 });
 
-window.WineCollection = Backbone.Collection.extend({
+window.PlantCollection = Backbone.Collection.extend({
 
-    model: Wine,
+    model: Plant,
 
     url: "/plants"
 

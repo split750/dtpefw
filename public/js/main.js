@@ -24,24 +24,24 @@ var AppRouter = Backbone.Router.extend({
 
 	list: function(page) {
         var p = page ? parseInt(page, 10) : 1;
-        var wineList = new WineCollection();
-        wineList.fetch({success: function(){
-            $("#content").html(new WineListView({model: wineList, page: p}).el);
+        var plantList = new PlantCollection();
+        plantList.fetch({success: function(){
+            $("#content").html(new PlantListView({model: plantList, page: p}).el);
         }});
         this.headerView.selectMenuItem('home-menu');
     },
 
     plantDetails: function (id) {
-        var wine = new Wine({_id: id});
-        wine.fetch({success: function(){
-            $("#content").html(new WineView({model: wine}).el);
+        var plant = new Plant({_id: id});
+        plant.fetch({success: function(){
+            $("#content").html(new PlantView({model: plant}).el);
         }});
         this.headerView.selectMenuItem();
     },
 
 	addPlant: function() {
-        var wine = new Wine();
-        $('#content').html(new WineView({model: wine}).el);
+        var plant = new Plant();
+        $('#content').html(new PlantView({model: plant}).el);
         this.headerView.selectMenuItem('add-menu');
 	},
 
@@ -55,7 +55,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'WineView', 'WineListItemView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'PlantView', 'PlantListItemView', 'AboutView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });

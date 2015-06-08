@@ -18,6 +18,24 @@
                                    disabled/>
                         </div>
                     </div>
+                    
+                    <div class="control-group">
+                        <label for="BU" class="control-label">Business Unit:</label>
+
+                        <div class="controls">
+                            <input type="text" id="bu" name="bu" value="<%= bu %>"/>
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="region" class="control-label">Region:</label>
+
+                        <div class="controls">
+                            <input type="text" id="region" name="region" value="<%= region %>"/>
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
 
                     <div class="control-group">
                         <label for="name" class="control-label">Name:</label>
@@ -43,14 +61,6 @@
                         <div class="controls">
                             <input type="text" id="country" name="country" value="<%= country %>"/>
                             <span class="help-inline"></span>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="region" class="control-label">Region:</label>
-
-                        <div class="controls">
-                            <input type="text" id="region" name="region" value="<%= region %>"/>
                         </div>
                     </div>
 
@@ -88,7 +98,7 @@
 
                 <div class="span4">
                     <div class="well" style="width: 180px;text-align: center;width:50%;margin: 0px auto;">
-                        <p><img id="picture" width="180" src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>"/></p>
+                        <p><img id="picture" width="180" src="<%= picture === null ? 'img/plant.jpg' : 'pics/' + picture %>"/></p>
                         <p style="color:#999;">To change the picture, drag a new picture from your file system onto the box above.</p>
                     </div>
                 </div>
@@ -109,7 +119,7 @@
 <div class="row-fluid status-bar">
     <div class="span12">
         <div class="alert alert-success" style="display: none">
-            <b>Success!</b> Wine saved successfully
+            <b>Success!</b> Plant saved successfully
         </div>
     </div>
 </div>
