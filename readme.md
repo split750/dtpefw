@@ -1,37 +1,32 @@
-# Node Cellar Sample Application with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB #
+# Node Todo App
 
-"Node Cellar" is a sample CRUD application built with with Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
+A Node app built with MongoDB and Angular. For demonstration purposes and a tutorial.
 
-The application allows you to browse through a list of wines, as well as add, update, and delete wines.
+Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB stores like a hoarder.
 
-This application is further documented [here](http://coenraets.org/blog).
+## Requirements
 
-The application is also hosted online. You can test it [here](http://nodecellar.coenraets.org).
+- [Node and npm](http://nodejs.org)
 
+## Installation
 
-## To run the application on your own Heroku account:##
+1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+2. Install the application: `npm install`
+3. Start the server: `node server.js`
+4. View in browser at `http://localhost:8080`
 
-1. Install the [Heroku Toolbelt](http://toolbelt.heroku.com)
+## Tutorial Series
 
-2. [Sign up](http://heroku.com/signup) for a Heroku account
+This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
 
-3. Login to Heroku from the `heroku` CLI:
+Each branch represents a certain tutorial.
+- tut1-starter: [Creating a Single Page Todo App with Node and Angular](http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular)
+- tut2-services: Coming Soon
+- tut3-auth: Coming Soon
+- tut4-sockets: Coming Soon
+- tut5-redis: Coming Soon
+- tut6-organization: Coming Soon
 
-        $ heroku login
+Happy Todo-ing!
 
-4. Create a new app on Heroku:
-
-        $ heroku create
-
-5. Add the [MongoLab Heroku Add-on](http://addons.heroku.com/mongolab)
-
-        $ heroku addons:add mongolab
-
-6. Upload the app to Heroku:
-
-        $ git push heroku master
-
-7. Open the app in your browser:
-
-        $ heroku open
-
+![Todo-aholic](http://i.imgur.com/ikyqgrn.png)

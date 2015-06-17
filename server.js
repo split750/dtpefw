@@ -1,38 +1,27 @@
-var express = require('express'),
-    path = require('path'),
-    http = require('http'),
-    plant = require('./routes/plant');
-
+// set up ======================================================================
+var express  = require('express');
+var app      = express(); 								// create our app w/ express
+var mongoose = require('mongoose'); 					// mongoose for mongodb
+var port  	 = process.env.PORT || 8080; 				// set the port
+var database = require('./config/database'); 			// load the database config
+var morgan   = require('morgan');
 var bodyParser = require('body-parser');
-var logger = require('morgan');
 var methodOverride = require('method-override');
 
-var app = express();
+// configuration ===============================================================
+mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 
-var server = require('http').createServer(app);
-var port = process.env.PORT || 1337;
+app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
+app.use(morgan('dev')); // log every request to the console
+app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-// Routing
-app.use(express.static(__dirname + '/public'));
 
+// routes ======================================================================
+require('./app/routes.js')(app);
 
-
-//app.use(express.bodyParser());
-//app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(methodOverride());
-
-// Socket.io
-var io = require('socket.io').listen(server);
-
-app.get('/plants', plant.findAll);
-app.get('/plants/:id', plant.findById);
-app.post('/plants', plant.addPlant);
-app.put('/plants/:id', plant.updatePlant);
-app.delete('/plants/:id', plant.deletePlant);
-
-server.listen(port, function () {
-    console.log("Express server listening on port " + port);
-});
+// listen (start app with node server.js) ======================================
+app.listen(port);
+console.log("App listening on port " + port);
