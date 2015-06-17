@@ -10,7 +10,7 @@ angular.module('scotchTodo', ['todoController', 'todoService'])
 
 
 
-angular.module('ReferenceList', ['ui.router', 'todoController', 'todoService'])
+angular.module('ReferenceList', ['ui.router', 'plantController', 'plantService'])
 
     /*
     .directive('plantNav', function() {
