@@ -13,5 +13,6 @@ app.get('/', function(req, res){
 require('./routes/user')(app); //user routes
 require('./routes/note')(app); // note routes
 require('./routes/category')(app); // category routes
+require('./routes/wasteType')(app);
 
 module.exports = app;

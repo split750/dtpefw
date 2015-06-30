@@ -36,28 +36,29 @@
               <div class="col-sm-6"
                 <fieldset class="form-group">
                   <label for="startUpYear">Start Up Year</label>
-                  <input class="form-control" type="text" id="startUpYear" name="startUpYear" ng-model="note.startUpYear">
+                  <input class="form-control" type="text" id="startUpYear" name="startUpYear" ng-model="note.contracts.startUpYear">
                 </fieldset>
               </div>
 
               <div class="col-sm-6"
                 <fieldset class="form-group">
                   <label for="contractType">Contract type</label>
-                  <select class="form-control" ng-options="user.id as user.name for user in users" ng-model="note.userId"></select>
+                  <select class="form-control" ng-options="user.id as user.name for user in users" ng-model="note.contracts.contractType"></select>
                 </fieldset>
               </div>
 
               <div class="col-sm-6"
                 <fieldset class="form-group">
                   <label for="contractEndDate">Contract end date</label>
-                  <input class="form-control" type="text" id="contractEndDate" name="contractEndDate" ng-model="note.contractEndDate">
+                  <input class="form-control" type="text" id="contractEndDate" name="contractEndDate" ng-model="note.contracts.contractEndDate">
                 </fieldset>
               </div>
 
               <div class="col-sm-6"
                 <fieldset class="form-group">
                   <label for="wasteType">Type of waste</label>
-                  <input class="form-control" type="text" id="wasteType" name="wasteType" ng-model="note.wasteType">
+                  <!--<input class="form-control" type="text" id="wasteType" name="wasteType" ng-model="note.contracts.wasteType">-->
+                  <select class="form-control" ng-options="wasteType.id as wasteType.name for wasteType in wasteTypes" ng-model="note.contracts.wasteType"></select>
                 </fieldset>
               </div>
 
