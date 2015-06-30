@@ -1,0 +1,158 @@
+<h1>New Plant</h1>
+
+<div class="row">
+  <form class="col-xs-12">
+    <div class="row">
+      
+      <div class="col-sm-6">
+        <fieldset class="form-group">
+          <label for="title">Name</label>
+          <input class="form-control" type="text" id="title" name="title" placeholder="Enter the plant name" ng-model="note.title">
+        </fieldset>
+      </div>
+      
+      <div class="col-sm-6">
+        <fieldset class="form-group">
+          <label for="title">Region</label>
+          <select class="form-control" ng-options="category.id as category.name for category in categories" ng-model="note.categoryId"></select>
+        </fieldset>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <hr>
+      <div class="col-xs-12">
+
+        <tabset>
+          
+          <tab heading="Contract">
+            
+            <div>
+              <div class="col-sm-12">
+                <h3>Contract Info - Date - Waste</h3>
+              </div>
+              
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="startUpYear">Start Up Year</label>
+                  <input class="form-control" type="text" id="startUpYear" name="startUpYear" ng-model="note.startUpYear">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="contractType">Contract type</label>
+                  <select class="form-control" ng-options="user.id as user.name for user in users" ng-model="note.userId"></select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="contractEndDate">Contract end date</label>
+                  <input class="form-control" type="text" id="contractEndDate" name="contractEndDate" ng-model="note.contractEndDate">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="wasteType">Type of waste</label>
+                  <input class="form-control" type="text" id="wasteType" name="wasteType" ng-model="note.wasteType">
+                </fieldset>
+              </div>
+
+            </div>
+          </tab>
+
+          <tab heading="Caracteristics">
+            
+            <div>
+           
+              <div class="col-sm-12">
+                <h3>Caracteristics info</h3>
+              </div>
+
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="nbLine">Number of Line</label>
+                  <input class="form-control" type="text" id="nbLine" name="nbLine" ng-model="note.nbLine">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="nbTurbine">Number of turbine</label>
+                  <input class="form-control" type="text" id="nbTurbine" name="nbTurbine" ng-model="note.nbTurbine">
+                </fieldset>
+              </div>
+            
+            </div>
+
+          </tab>
+
+          <tab heading="Boiler Furnace">
+            
+            
+
+          </tab>
+
+          <tab heading="Flue Gaz Treatment">
+            
+            
+
+          </tab>
+
+          <tab heading="Valorisation">
+            
+            
+
+          </tab>
+
+          <tab heading="Strategy Questionnaire">
+            
+            
+
+          </tab>
+
+        </tabset>
+
+      </div>
+
+    </div>
+    
+    <div class="row">
+      <hr>
+
+      <div class="col-sm-6">
+        <fieldset class="form-group">
+          <label for="description">Description</label>
+          <input class="form-control" type="text" id="description" name="description" ng-model="note.description">
+        </fieldset>
+      </div>
+
+      <div class="col-sm-6">
+        <fieldset class="form-group">
+          <label for="content">Content</label>
+          <textarea class="form-control" type="text" id="content" name="content" ng-model="note.content"></textarea>
+        </fieldset>
+      </div>
+      
+      <div class="col-sm-6">
+        <fieldset class="form-group">
+          <label for="title">User</label>
+          <select class="form-control" ng-options="user.id as user.name for user in users" ng-model="note.userId"></select>
+        </fieldset>
+      </div>
+
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-4">
+        <input type="submit" value="{{isSubmitting ? 'saving...' : 'Save'}}" class="btn btn-default" ng-click="saveNote(note)" ng-disabled="isSubmitting">
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
