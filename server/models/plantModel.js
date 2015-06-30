@@ -6,33 +6,28 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-
 var Plant = new Schema({
     userId : Number,
     categoryId: Number,
     title: String,
     description : String,
     content : String,
+    
     contracts : [{
         startUpYear : Number,
         contractType : String,
-        contractEndDate : Number,
-        wasteType : String
+        contractEndDate : Number
     }],
+    
     caracteristics : [{
         nbLine : Number,
-        nbTurbine : Number
-    }]
+        nbTurbine : Number,
+        line1Id : String,
+        line2Id : String,
+        line3Id : String,
+        line4Id : String
+    }],
 
 });
-
-
-var Contract = new Schema({
-    startUpYear : Number,
-    contractType : String,
-    contractEndDate : Number,
-    wasteType : String
-});
-
 
 module.exports = mongoose.model('Plants', Plant);

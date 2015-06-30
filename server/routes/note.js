@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var notesModel = require('../models/noteModel');
+var notesModel = require('../models/plantModel');
 
 var categoryModel = require('../models/category');
 

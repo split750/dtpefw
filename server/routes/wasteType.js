@@ -1,5 +1,9 @@
 var _ = require('lodash');
 
+/**********************************************/
+/*                 WASTE TYPE                 */
+/**********************************************/
+
 var WasteType = require('../models/wasteTypeModel');
 
 var wasteTypes = [
@@ -8,6 +12,7 @@ var wasteTypes = [
   {"id": 3,  "name": "MSW3"},
   {"id": 4,  "name": "MSW4"}
 ];
+
 
 module.exports = function(app){
   app.get('/wasteTypes', function(req, res){
@@ -23,4 +28,7 @@ module.exports = function(app){
 
     res.json(WasteType.get(wasteTypeId) || {});
   });
+
+
 };
+
