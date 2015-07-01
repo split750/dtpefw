@@ -51,7 +51,7 @@
               <div class="col-sm-4">
                 <fieldset class="form-group">
                   <label for="contractEndDate">Contract end date</label>
-                  <input class="form-control" type="date" id="contractEndDate" name="contractEndDate" ng-model="note.contracts.contractEndDate" datepicker-popup="{{format}}" is-open="opened"  datepicker-options="dateOptions" close-text="Close" />
+                  <input class="form-control" type="text" id="contractEndDate" name="contractEndDate" ng-model="note.contracts.contractEndDate" datepicker-popup="{{format}}" is-open="opened"  datepicker-options="dateOptions" close-text="Close" />
                 </fieldset>
               </div>
 
@@ -585,41 +585,36 @@
   </form>
 </div>
 
-
-<!--
 <div class="row">
   <form class="col-xs-12">
-    <h2>Plant information</h2>
-    <div class="row">
+    <h2>Lines information</h2>
 
-      <div class="col-sm-4">
-        <fieldset class="form-group">
-          <label for="title">Name</label>
-          <input class="form-control" type="text" id="title" name="title" ng-model="note.title">
-        </fieldset>
+    <div class="row">
+      <hr>
+      <div class="col-xs-12">
+
+        <tabset>
+          
+          <tab heading="Contract">
+            
+            
+
+          </tab>
+
+          
+
+        </tabset>
+
       </div>
 
-        <fieldset class="form-group">
-          <label for="title">Category</label>
-          <select ng-options="category.id as category.name for category in categories" ng-model="note.categoryId"></select>
-        </fieldset>
+    </div>
+    
+    
+    <div class="row">
+      <div class="col-sm-4">
+        <input type="submit" value="{{isSubmitting ? 'saving line...' : 'Save line'}}" class="btn btn-default" ng-click="saveLine(line)" ng-disabled="isSubmitting">
+      </div>
+    </div>
 
-        <fieldset class="form-group">
-          <label for="title">User</label>
-          <select ng-options="user.id as user.name for user in users" ng-model="note.userId"></select>
-        </fieldset>
-
-        <fieldset class="form-group">
-          <label for="description">Description</label>
-          <input class="form-control" type="text" id="description" name="description" ng-model="note.description">
-        </fieldset>
-
-        <fieldset class="form-group">
-          <label for="content">Content</label>
-          <textarea class="form-control" type="text" id="content" name="content" ng-model="note.content"></textarea>
-        </fieldset>
-
-  <input type="submit" value="{{isSubmitting ? 'saving...' : 'Save'}}" class="btn btn-default" ng-click="saveNote(note)" ng-disabled="isSubmitting">
-</form>
-
--->
+  </form>
+</div>

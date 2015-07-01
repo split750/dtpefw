@@ -40,4 +40,7 @@ angular.module('NoteWrangler').controller('NotesEditController', function($http,
   $scope.format = $scope.formats[0];
 
 
+  //     Line form controller     //
+  console.log($scope.note);
+
 });
