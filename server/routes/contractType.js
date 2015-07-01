@@ -9,8 +9,8 @@ var ContractType = require('../models/contractTypeModel');
 var contractTypes = [
   {"id": 1,  "name": "O&M"},
   {"id": 2,  "name": "BOT"},
-  {"id": 3,  "name": "3"},
-  {"id": 4,  "name": "4"}
+  {"id": 3,  "name": "BOO"},
+  {"id": 4,  "name": "Owner"}
 ];
 
 

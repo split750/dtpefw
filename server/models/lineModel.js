@@ -8,8 +8,13 @@ var Schema = mongoose.Schema;
 
 var Line = new Schema({
 
+    lineId : Number,
+
     wastes : [{
-        wasteType : String,
+        wasteType1 : String,
+        wasteType2 : String,
+        wasteType3 : String,
+        wasteType4 : String,
         lhvNominal : Number
     }],
 
@@ -17,6 +22,7 @@ var Line = new Schema({
         incinerationCapacity : Number,
         furnaceCapacity : Number,
         furnaceType : String,
+        furnaceConstructor : String,
     }],
 
     boilers : [{
@@ -24,8 +30,21 @@ var Line = new Schema({
         boilerTemperature : Number,
         boilerEfficiency : Number,
         steamProduction : Number,
+        boilerConstructor : String,
     }],
 
+    flueGazCleaning : [{
+        dustFilterBeforeFCG : String,
+        fCGType : String,
+        dustFilter : String,
+        consumable : String,
+        noxTreatment : String,
+        noxConsumable : String,
+        dioxinTreatment : String,
+        dioxinConsumable : String,
+        fCGConstructor : String,
+        filterConstructor : String,
+    }]
 
 });
 
