@@ -5,9 +5,11 @@ var app = express();
 require('./expressConfig')(app, express);
 
 // Root route
+
+app.use(express.static(__dirname + '../app/assets/'));
+
 app.get('/', function(req, res){
-  res.sendfile('index.html', {root: app.settings.views});
-  console.log(app.settings.views);
+  res.sendfile('./app/views/index.html');
 });
 
 // Load routes
