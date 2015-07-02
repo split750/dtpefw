@@ -22,6 +22,6 @@
   <div ng-repeat="note in notes | categoryFilter:search.category | filter:search.input" class="col-sm-6">
     <h2><a title="{{note.user.name}}" ng-href="#/notes/{{note._id}}">{{note.title}}</a></h2>
     <p>{{note.description}}</p>
-    <p><span class="label label-info">{{categoryName[note.categoryId - 1].name}}</span></p>
+    <p><span class="label label-info">{{note.category.name}}</span></p>
   </div>
 </div>
