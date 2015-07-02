@@ -7,7 +7,7 @@ module.exports = function(app) {
   });
 
   app.get('/categories/:id', function(req, res) {
-    var categoryId = parseInt(req.param('id'), 10);
+    var categoryId = parseInt(req.params('id'), 10);
     res.json(Category.get(categoryId) || {});
   });
 };

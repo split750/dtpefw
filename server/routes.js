@@ -7,7 +7,7 @@ require('./expressConfig')(app, express);
 
 // Root route
 
-app.use(express.static(path.join(__dirname, '../app/')));
+//app.use(express.static(path.join(__dirname, '../app/')));
 
 
 app.get('/', function(req, res){
