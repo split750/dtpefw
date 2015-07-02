@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "description": "DTP EfW app.",
-  "repository": "https://",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.1",
