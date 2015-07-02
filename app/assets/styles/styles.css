@@ -1,8 +1,0 @@
-
-/* UI bootstrap fix */
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
-
-.about-icon {
-    max-width: 95px;
-}
