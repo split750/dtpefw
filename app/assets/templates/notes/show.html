@@ -1,0 +1,253 @@
+<div class="row">
+    <div class="col-xs-12">
+
+        <div class="page-header">
+          <h1>{{note.title}}</h1>
+          <h4><span class="label label-info">{{categoryName}}</span></h4>
+          <p>Contracted : <span>{{note.contracts.contracted}}</span></p>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Contract information</h3>
+                <hr>
+                <div class="col-sm-4">
+                    <h5>Start up year</h5>
+                    <p>{{note.contracts.startUpYear}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Contract type</h5>
+                    <p>{{note.contracts.contractType}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Contract end date</h5>
+                    <p>{{note.contracts.contractEndDate}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Contacts information</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Tel</th>
+                                <th>Mail</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Plant Director</strong></td>
+                                <td>{{note.contacts.plantDirectorName}}</td>
+                                <td>{{note.contacts.plantDirectorTel}}</td>
+                                <td>{{note.contacts.plantDirectorEmail}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plant Manager</strong></td>
+                                <td>{{note.contacts.plantManagerName}}</td>
+                                <td>{{note.contacts.plantManagerTel}}</td>
+                                <td>{{note.contacts.plantManagerEmail}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Region Manager</strong></td>
+                                <td>{{note.contacts.regionManagerName}}</td>
+                                <td>{{note.contacts.regionManagerTel}}</td>
+                                <td>{{note.contacts.regionManagerEmail}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Caracteristics information</h3>
+                <hr>
+                <div class="col-sm-4">
+                    <h5>Number of line</h5>
+                    <p>{{note.caracteristics.nbLine}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Valorisation Type</h5>
+                    <p>{{note.caracteristics.valorisationType}}</p>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Number of turbine</h5>
+                    <p>{{note.caracteristics.nbTurbine}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Strategy information</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Ownership</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is SE owner ?</h5>
+                        <p>{{note.strategyQuestionnaire.seIsOwner}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is SE shareholder ?</h5>
+                        <p>{{note.strategyQuestionnaire.seIsShareholder}} %</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is SE PPP or PFI ?</h5>
+                        <p>{{note.strategyQuestionnaire.seIsPPPorPFI}} %</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is SE Operator ?</h5>
+                        <p>{{note.strategyQuestionnaire.seIsOperator}} years</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Permit</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is yearly inciniration volume limited ?</h5>
+                        <p>{{note.strategyQuestionnaire.yearlyIncinirationVolumeLimited}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Is plant emissions target below permit ?</h5>
+                        <p>{{note.strategyQuestionnaire.plantEmissionsTargetBelowPermit}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Value creation for SE</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Do you create value per ton incinirated ?</h5>
+                        <p>{{note.strategyQuestionnaire.doYouCreateValuePerTonIncinirated}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Do you create value per MWh electricity exported ?</h5>
+                        <p>{{note.strategyQuestionnaire.doYouCreateValuePerMWElecExported}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Do you create value per MWh heat/steam exported ?</h5>
+                        <p>{{note.strategyQuestionnaire.doYouCreateValuePerMWHeatExported}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Value from other precesses (IBA (metal), Gas, dryer...) ?</h5>
+                        <p>{{note.strategyQuestionnaire.valueFromOtherProcesses}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Organisation</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Stand alone plant (own P&L) ?</h5>
+                        <p>{{note.strategyQuestionnaire.standAlonePlant}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Part of country/region P&L ?</h5>
+                        <p>{{note.strategyQuestionnaire.partOfRegionCountryPandL}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Number of finance/administration staff ?</h5>
+                        <p>{{note.strategyQuestionnaire.nbOfFinanceAdminStaff}} persons</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Number of operation staff ?</h5>
+                        <p>{{note.strategyQuestionnaire.nbOfOperationStaff}} persons</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Number of maintenance staff ?</h5>
+                        <p>{{note.strategyQuestionnaire.nbOfMaintenanceStaff}} persons</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Total number of staff ?</h5>
+                        <p>{{note.strategyQuestionnaire.totalNbOfStaff}} persons</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Operation targets</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Optimisation program consumables available ?</h5>
+                        <p>{{note.strategyQuestionnaire.optimisationProgramConsumables}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>APCR - disposal/valorisation/stabilisation ?</h5>
+                        <p>{{note.strategyQuestionnaire.aPCR}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Bottom ash - external/internal treatment ?</h5>
+                        <p>{{note.strategyQuestionnaire.bottomAsh}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Availability target ?</h5>
+                        <p>{{note.strategyQuestionnaire.availabilityTarget}} %</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Heating value in MJ/kg (cooperation with WFM) target ?</h5>
+                        <p>{{note.strategyQuestionnaire.heatingValueTarget}} MJ/kg</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Maintenance</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Maintenance strategy available (written document) ?</h5>
+                        <p>{{note.strategyQuestionnaire.maintenanceStrategyAvailable}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Time duration between planned stop (revision) ?</h5>
+                        <p>{{note.strategyQuestionnaire.timeDurationBetweenPlannedStop}} month(s)</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Number of service contracts ?</h5>
+                        <p>{{note.strategyQuestionnaire.nbOfServiceContracts}} contract(s)</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Long term lifecycle analysis of critical components ?</h5>
+                        <p>{{note.strategyQuestionnaire.longTermLifecycleCriticalComponents}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>CMMS - system => completely implemented / used ?</h5>
+                        <p>{{note.strategyQuestionnaire.cMMSSystem}} %</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Service contract turbine implemented ?</h5>
+                        <p>{{note.strategyQuestionnaire.serviceContractTurbine}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Plant optimisation</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Energy optimisation projects under progress ?</h5>
+                        <p>{{note.strategyQuestionnaire.energyOptimizationProject}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>Plant (process) modification projects under progress ?</h5>
+                        <p>{{note.strategyQuestionnaire.plantModificationProject}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <hr>
+        <a ng-href="#/notes/{{note._id}}/edit" class="btn btn-default">Edit Plant</a>
+        <!--<a href="" ng-click="deleteNote(note)" class="btn btn-danger">Delete Plant</a>-->
+    </div>
+</div>

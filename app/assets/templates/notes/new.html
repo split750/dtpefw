@@ -1,0 +1,588 @@
+<h1>New Plant</h1>
+
+<div class="row">
+  <form class="col-xs-12">
+    <h2>Plant information</h2>
+    <div class="row">
+      
+      <div class="col-sm-4">
+        <fieldset class="form-group">
+          <label for="title">Name</label>
+          <input class="form-control" type="text" id="title" name="title" placeholder="Enter the plant name" ng-model="note.title">
+        </fieldset>
+      </div>
+      
+      <div class="col-sm-4">
+        <fieldset class="form-group">
+          <label for="title">Region</label>
+          <select class="form-control" ng-options="category.id as category.name for category in categories" ng-model="note.categoryId"></select>
+        </fieldset>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <hr>
+      <div class="col-xs-12">
+
+        <tabset>
+          
+          <tab heading="Contract">
+            
+            <div>
+              <div class="col-sm-12">
+                <h3>Contract Information</h3>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="startUpYear">Start Up Year</label>
+                  <input class="form-control" type="text" id="startUpYear" name="startUpYear" ng-model="note.contracts.startUpYear">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="contractType">Contract type</label>
+                  <select class="form-control" ng-options="contractType.id as contractType.name for contractType in contractTypes" ng-model="note.contracts.contractType"></select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="contractEndDate">Contract end date</label>
+                  <input class="form-control" type="date" id="contractEndDate" name="contractEndDate" ng-model="note.contracts.contractEndDate" datepicker-popup="{{format}}" is-open="opened"  datepicker-options="dateOptions" close-text="Close" />
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="contracted">Contracted ?</label>
+                  <select class="form-control" ng-model="note.contracts.contracted">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+            </div>
+          </tab>
+          
+          <tab heading="Contacts">
+            
+            <div>
+              <div class="col-sm-12">
+                <h3>Contacts Information</h3>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Plant Director</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantDirectorName" name="plantDirectorName" ng-model="note.contacts.plantDirectorName" placeholder="Plant Director Name">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantDirectorTel" name="plantDirectorTel" ng-model="note.contacts.plantDirectorTel"  placeholder="Plant Director Tel">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantDirectorEmail" name="plantDirectorEmail" ng-model="note.contacts.plantDirectorEmail" placeholder="Plant Director Email">
+                </fieldset>
+              </div>
+              
+              <div class="col-sm-12">
+                <h4>Plant Manager</h4>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantManagerName" name="plantManagerName" ng-model="note.contacts.plantManagerName" placeholder="Plant Manager Name">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantManagerTel" name="plantManagerTel" ng-model="note.contacts.plantManagerTel"  placeholder="Plant Manager Tel">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="plantManagerEmail" name="plantManagerEmail" ng-model="note.contacts.plantManagerEmail" placeholder="Plant Manager Email">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Region Manager</h4>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="regionManagerName" name="regionManagerName" ng-model="note.contacts.regionManagerName" placeholder="Region Manager Name">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="regionManagerTel" name="regionManagerTel" ng-model="note.contacts.regionManagerTel" placeholder="Region Manager Tel">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" id="regionManagerEmail" name="regionManagerEmail" ng-model="note.contacts.regionManagerEmail" placeholder="Region Manager Email">
+                </fieldset>
+              </div>
+
+            </div>
+          </tab>
+
+          <tab heading="Caracteristics">
+            
+            <div>
+           
+              <div class="col-sm-12">
+                <h3>Caracteristics information</h3>
+              </div>
+
+              <div class="col-sm-4"
+                <fieldset class="form-group">
+                  <label for="nbLine">Number of Line</label>
+                  <input class="form-control" type="Number" id="nbLine" name="nbLine" ng-model="note.caracteristics.nbLine">
+                </fieldset>
+              </div>
+              
+              <div class="col-sm-4"
+                <fieldset class="form-group">
+                  <label for="valorisationType">Valorisation Type</label>
+                  <select class="form-control" ng-model="note.caracteristics.valorisationType">
+                    <option value="">Choose a valorisation type</option>
+                    <option value="electicity">Electricity</option>
+                    <option value="heat">Heat</option>
+                    <option value="electricityHeat">Electricity + Heat</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4"
+                <fieldset class="form-group">
+                  <label for="nbTurbine">Number of turbine</label>
+                  <input class="form-control" type="Number" id="nbTurbine" name="nbTurbine" ng-model="note.caracteristics.nbTurbine">
+                </fieldset>
+              </div>
+            
+            </div>
+
+          </tab>
+
+          <tab heading="Strategy Questionnaire">
+            
+            <div>
+              <div class="col-sm-12">
+                <h3>Strategy Information</h3>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Ownership</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="seIsOwner">Is SE owner ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.seIsOwner">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="seIsShareholder">Is SE shareholder ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="seIsShareholder" name="seIsShareholder" ng-model="note.strategyQuestionnaire.seIsShareholder"  placeholder="Give the pourcentage of shareholding">
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="seIsPPPorPFI">Is SE PPP or PFI ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="seIsPPPorPFI" name="seIsPPPorPFI" ng-model="note.strategyQuestionnaire.seIsPPPorPFI"  placeholder="Give the pourcentage of PPP or PFI">
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="seIsOperator">Is SE Operator ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" id="seIsOperator" name="seIsOperator" ng-model="note.strategyQuestionnaire.seIsOperator"  placeholder="Give the number of years of operation">
+                    <div class="input-group-addon">years</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Permit</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="yearlyIncinirationVolumeLimited">Is yearly inciniration volume limited ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.yearlyIncinirationVolumeLimited">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="plantEmissionsTargetBelowPermit">Is plant emissions target below permit ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.plantEmissionsTargetBelowPermit">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Value creation for SE</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="doYouCreateValuePerTonIncinirated">Do you create value per ton incinirated ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.doYouCreateValuePerTonIncinirated">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="doYouCreateValuePerMWElecExported">Do you create value per MWh electricity exported ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.doYouCreateValuePerMWElecExported">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="doYouCreateValuePerMWHeatExported">Do you create value per MWh heat/steam exported ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.doYouCreateValuePerMWHeatExported">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="valueFromOtherProcesses">Value from other precesses (IBA (metal), Gas, dryer...) ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.valueFromOtherProcesses">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Organisation</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="standAlonePlant">Stand alone plant (own P&L) ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.standAlonePlant">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="partOfRegionCountryPandL">Part of country/region P&L ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.partOfRegionCountryPandL">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="nbOfFinanceAdminStaff">Number of finance/administration staff ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" id="nbOfFinanceAdminStaff" name="nbOfFinanceAdminStaff" ng-model="note.strategyQuestionnaire.nbOfFinanceAdminStaff"  placeholder="Give the number of persons">
+                    <div class="input-group-addon">persons</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="nbOfOperationStaff">Number of operation staff ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" id="nbOfOperationStaff" name="nbOfOperationStaff" ng-model="note.strategyQuestionnaire.nbOfOperationStaff"  placeholder="Give the number of persons">
+                    <div class="input-group-addon">persons</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="nbOfMaintenanceStaff">Number of maintenance staff ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" id="nbOfMaintenanceStaff" name="nbOfMaintenanceStaff" ng-model="note.strategyQuestionnaire.nbOfMaintenanceStaff"  placeholder="Give the number of persons">
+                    <div class="input-group-addon">persons</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="totalNbOfStaff">Total number of staff ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="number" id="totalNbOfStaff" name="totalNbOfStaff" ng-model="note.strategyQuestionnaire.totalNbOfStaff"  placeholder="Give the number of persons">
+                    <div class="input-group-addon">persons</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Operation targets</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="optimisationProgramConsumables">Optimisation program consumables available ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.optimisationProgramConsumables">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="aPCR">APCR - disposal/valorisation/stabilisation ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.aPCR">
+                    <option value="D">Disposal</option>
+                    <option value="V">Valorisation</option>
+                    <option value="S">Sabilisation</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="bottomAsh">Bottom ash - external/internal treatment ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.bottomAsh">
+                    <option value="I">Internal</option>
+                    <option value="E">External</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="availabilityTarget">Availability target ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="availabilityTarget" name="availabilityTarget" ng-model="note.strategyQuestionnaire.availabilityTarget"  placeholder="Give the pourcentage of availability">
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="heatingValueTarget">Heating value in MJ/kg (cooperation with WFM) target ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="heatingValueTarget" name="heatingValueTarget" ng-model="note.strategyQuestionnaire.heatingValueTarget"  placeholder="Give the pourcentage of MJ/kg">
+                    <div class="input-group-addon">MJ/kg</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Maintenance</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="maintenanceStrategyAvailable">Maintenance strategy available (written document) ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.maintenanceStrategyAvailable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="timeDurationBetweenPlannedStop">Time duration between planned stop (revision) ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="timeDurationBetweenPlannedStop" name="timeDurationBetweenPlannedStop" ng-model="note.strategyQuestionnaire.timeDurationBetweenPlannedStop"  placeholder="Give the number of months">
+                    <div class="input-group-addon">month(s)</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="nbOfServiceContracts">Number of service contracts ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="nbOfServiceContracts" name="nbOfServiceContracts" ng-model="note.strategyQuestionnaire.nbOfServiceContracts"  placeholder="Give the number of contract(s)">
+                    <div class="input-group-addon">contract(s)</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="longTermLifecycleCriticalComponents">Long term lifecycle analysis of critical components ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.longTermLifecycleCriticalComponents">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="cMMSSystem">CMMS - system => completely implemented / used ?</label>
+                  <div class="input-group">
+                    <input class="form-control" type="Number" id="cMMSSystem" name="cMMSSystem" ng-model="note.strategyQuestionnaire.cMMSSystem"  placeholder="Give the pourcentage of implementation / usage">
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="serviceContractTurbine">Service contract turbine implemented ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.serviceContractTurbine">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-12">
+                <h4>Plant optimisation</h4>
+              </div>
+              
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="energyOptimizationProject">Energy optimisation projects under progress ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.energyOptimizationProject">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-4">
+                <fieldset class="form-group">
+                  <label for="plantModificationProject">Plant (process) modification projects under progress ?</label>
+                  <select class="form-control" ng-model="note.strategyQuestionnaire.plantModificationProject">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </fieldset>
+              </div>
+
+            </div>  
+
+          </tab>
+
+          <!--
+          <tab heading="Other">
+            
+            <div>
+              
+              <div class="col-sm-6"
+                <fieldset class="form-group">
+                  <label for="wasteType">Type of waste</label>
+                  <!--<input class="form-control" type="text" id="wasteType" name="wasteType" ng-model="note.contracts.wasteType">
+                  <select class="form-control" ng-options="wasteType.id as wasteType.name for wasteType in wasteTypes" ng-model="note.contracts.wasteType"></select>
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6">
+                <fieldset class="form-group">
+                  <label for="description">Description</label>
+                  <input class="form-control" type="text" id="description" name="description" ng-model="note.description">
+                </fieldset>
+              </div>
+
+              <div class="col-sm-6">
+                <fieldset class="form-group">
+                  <label for="content">Content</label>
+                  <textarea class="form-control" type="text" id="content" name="content" ng-model="note.content"></textarea>
+                </fieldset>
+              </div>
+              
+              <div class="col-sm-6">
+                <fieldset class="form-group">
+                  <label for="title">User</label>
+                  <select class="form-control" ng-options="user.id as user.name for user in users" ng-model="note.userId"></select>
+                </fieldset>
+              </div>
+
+            </div>
+
+          </tab>
+
+          <tab heading="Boiler Furnace">
+            
+            
+
+          </tab>
+
+          <tab heading="Flue Gaz Treatment">
+            
+            
+
+          </tab>
+
+          <tab heading="Valorisation">
+            
+            
+
+          </tab>
+          -->
+
+        </tabset>
+
+      </div>
+
+    </div>
+    
+    
+    <div class="row">
+      <div class="col-sm-4">
+        <input type="submit" value="{{isSubmitting ? 'saving plant...' : 'Save plant'}}" class="btn btn-default" ng-click="saveNote(note)" ng-disabled="isSubmitting">
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
