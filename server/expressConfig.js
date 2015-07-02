@@ -19,6 +19,7 @@ module.exports = function(app, express) {
   // parse application/json
   app.use(bodyParser.json());
 
+  app.use(logger('dev'));
   app.use(methodOverride());
 };
 
