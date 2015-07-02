@@ -5,15 +5,18 @@ var path = require('path');
 // Load Express Configuration
 require('./expressConfig')(app, express);
 
+
 // Root route
 
-//app.use(express.static(path.join(__dirname, '../app/')));
+/*
+app.use(express.static(path.join(__dirname, '../app/')));
+*/
 
-
+/*
 app.get('/', function(req, res){
   res.sendFile('index.html', { root: path.join(__dirname, '../app/views') });
 });
-
+*/
 
 // Load routes
 require('./routes/user')(app); //user routes
