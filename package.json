@@ -20,7 +20,5 @@
     "grunt-contrib-sass": "^0.7.3",
     "grunt-contrib-watch": "^0.6.1"
   },
-  "scripts": {
-    "start": "node app.js"
-  }
+  "main": "./server.js",
 }
