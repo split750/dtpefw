@@ -3,7 +3,7 @@ angular.module('NoteWrangler').directive("nwCategorySelector", function(Category
     replace: true,
     restrict: "E",
     require: "?ngModel",
-    templateUrl: '/assets/templates/directives/nwCategorySelector.html',
+    templateUrl: './assets/templates/directives/nwCategorySelector.html',
     link: function(scope, element, attrs, ngModelCtrl){
       var activeCategory = {};
       scope.categories = Category.query();
