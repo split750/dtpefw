@@ -36,6 +36,7 @@ var database = require('./database');      // load the database config
 mongoose.connect(database.url);   // connect to mongoDB database on modulus.io
 
 var db = mongoose.connection;
+console.log('try to connect mongolab');
 
 db.on('error', console.error.bind(console, 'connection error:'));  
  
