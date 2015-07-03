@@ -5,6 +5,7 @@
   "description": "DTP EfW app.",
   "license": "MIT",
   "dependencies": {
+    "azure": "^0.10.6",
     "body-parser": "^1.13.1",
     "cookie-parser": "^1.3.2",
     "express": "^4.13.0",
@@ -12,12 +13,6 @@
     "method-override": "^2.3.3",
     "mongoose": "^4.0.6",
     "morgan": "^1.6.0"
-  },
-  "devDependencies": {
-    "bower": "^1.3.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-sass": "^0.7.3",
-    "grunt-contrib-watch": "^0.6.1"
   },
   "scripts": {
     "start": "node app.js"
